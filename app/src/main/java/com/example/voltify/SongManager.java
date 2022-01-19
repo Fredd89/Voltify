@@ -1,5 +1,7 @@
 package com.example.voltify;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class SongManager {
@@ -11,8 +13,14 @@ public class SongManager {
         songs.add(song);
     }
 
-    public void showSongs() {
-        
+    public String showSongs() {
+        StringBuilder sb = new StringBuilder();
+        if (songs.size()>=2) {
+            for (Song s : songs) {
+                sb.append(",");
+            }
+        }
+        String s = sb.toString();
+        return s;
     }
-
 }
