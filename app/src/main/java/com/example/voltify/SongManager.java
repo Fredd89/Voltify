@@ -14,11 +14,13 @@ public class SongManager {
     }
 
     public String showSongs() {
+        Log.d("stringBuilded", "ciaooo");
         StringBuilder sb = new StringBuilder();
-        if (songs.size()>=2) {
-            for (Song s : songs) {
-                sb.append(",");
-            }
+        for (Song s : songs) {
+            sb.append(s.getTitle() + "-");
+            sb.append(s.getArtist() + "-");
+            sb.append(s.getDuration() + "-");
+            sb.append(s.getGenre() + "-");
         }
         String s = sb.toString();
         return s;

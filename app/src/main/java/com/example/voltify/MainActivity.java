@@ -4,15 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText title, artist, genre, duration;
+    EditText title, artist, duration;
+    Spinner genre;
     Button insert, show;
     SongManager songManager = new SongManager();
+    String genres[] = {"Pop", "Rap", "Classic", "Rock"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         insert = findViewById(R.id.insert);
         show = findViewById(R.id.show);
         SongManager songManager = new SongManager();
+        ArrayAdapter genresAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, genres);
+
+        genre.setAdapter(genresAdapter);
 
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                songManager.addSong(title.getText().toString(), artist.getText().toString(), genre.getText().toString(), Integer.getInteger(duration.getText().toString()));
+                songManager.addSong(title.getText().toString(), artist.getText().toString(), genre.getSelectedItem().toString(), Integer.getInteger(duration.getText().toString()));
             }
         });
 
@@ -38,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                intent.putExtra("songsList", songManager.showSongs());
+                songManager.showSongs();
                 startActivity(intent);
             }
         });
