@@ -14,15 +14,15 @@ public class SongManager {
     }
 
     public String showSongs() {
-        Log.d("stringBuilded", "ciaooo");
         StringBuilder sb = new StringBuilder();
         for (Song s : songs) {
             sb.append(s.getTitle() + "-");
             sb.append(s.getArtist() + "-");
-            sb.append(s.getDuration() + "-");
             sb.append(s.getGenre() + "-");
+            sb.append(s.getDuration() + "-");
         }
-        String s = sb.toString();
-        return s;
+        String string = sb.toString();
+        Log.d("lupetto", "lista: " + string);
+        return string;
     }
 }
