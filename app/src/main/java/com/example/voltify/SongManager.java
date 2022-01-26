@@ -19,7 +19,7 @@ public class SongManager {
             sb.append(s.getTitle() + "-");
             sb.append(s.getArtist() + "-");
             sb.append(s.getGenre() + "-");
-            sb.append(s.getDuration() + "-");
+            sb.append(s.getDuration().toString());
         }
         String string = sb.toString();
         Log.d("lupetto", "lista: " + string);

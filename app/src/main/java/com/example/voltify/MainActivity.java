@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                songManager.addSong(title.getText().toString(), artist.getText().toString(), genre.getSelectedItem().toString(), Integer.getInteger(duration.getText().toString()));
+                songManager.addSong(title.getText().toString(), artist.getText().toString(), genre.getSelectedItem().toString(), Integer.parseInt(duration.getText().toString()));
             }
         });
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                songManager.showSongs();
+                intent.putExtra("songsList", songManager.showSongs());
                 startActivity(intent);
             }
         });
