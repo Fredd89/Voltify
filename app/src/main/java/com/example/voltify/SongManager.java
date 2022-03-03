@@ -1,6 +1,8 @@
 package com.example.voltify;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -13,7 +15,7 @@ public class SongManager {
         songs.add(song);
     }
 
-    public String showSongs() {
+    public String showSongs(Context context) {
         StringBuilder sb = new StringBuilder();
         for (Song s : songs) {
             sb.append(s.getTitle() + "-");
@@ -22,7 +24,6 @@ public class SongManager {
             sb.append(s.getDuration().toString());
         }
         String string = sb.toString();
-        Log.d("lupetto", "lista: " + string);
         return string;
     }
 }

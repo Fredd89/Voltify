@@ -2,14 +2,15 @@ package com.example.voltify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         duration = findViewById(R.id.duration);
         insert = findViewById(R.id.insert);
         show = findViewById(R.id.show);
+        Context context = getApplicationContext();
         SongManager songManager = new SongManager();
         ArrayAdapter genresAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, genres);
 
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                intent.putExtra("songsList", songManager.showSongs());
+                String string = songManager.showSongs(context);
+                intent.putExtra("songsList", string);
+                Toast.makeText(context, string, Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
