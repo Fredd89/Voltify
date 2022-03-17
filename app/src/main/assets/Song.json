@@ -1,0 +1,19 @@
+{
+  "songs":  [
+    {
+      "titolo1":
+      {
+        "title": "titolo1",
+        "artist": "artista1",
+        "genre": "pop",
+        "duration": 200
+      },
+      "titolo2":
+      {
+        "title": "titolo2",
+        "artist": "artista2",
+        "genre": "rap",
+        "duration": 300
+      }
+    }]
+}

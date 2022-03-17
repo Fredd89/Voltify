@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
                 String string = songManager.showSongs(context);
-                Log.d("Dio lupo", string);
                 intent.putExtra("songsList", string);
                 startActivity(intent);
             }

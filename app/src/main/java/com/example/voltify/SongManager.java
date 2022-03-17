@@ -18,10 +18,10 @@ public class SongManager {
     public String showSongs(Context context) {
         StringBuilder sb = new StringBuilder();
         for (Song s : songs) {
-            sb.append(s.getTitle() + "-");
-            sb.append(s.getArtist() + "-");
-            sb.append(s.getGenre() + "-");
-            sb.append(s.getDuration().toString());
+            sb.append(s.getTitle() + ",");
+            sb.append(s.getArtist() + ",");
+            sb.append(s.getGenre() + ",");
+            sb.append(s.getDuration().toString() + ",");
         }
         String string = sb.toString();
         return string;
