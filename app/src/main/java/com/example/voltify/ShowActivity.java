@@ -35,7 +35,7 @@ public class ShowActivity extends AppCompatActivity {
         importButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                manageFile.jsonDecode(context);
             }
         });
 

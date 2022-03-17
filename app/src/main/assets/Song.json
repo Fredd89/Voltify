@@ -1,5 +1,5 @@
 {
-  "songs":  [
+  "songs":
     {
       "titolo1":
       {
@@ -15,5 +15,5 @@
         "genre": "rap",
         "duration": 300
       }
-    }]
+    }
 }

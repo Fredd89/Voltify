@@ -5,6 +5,10 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.*;
 
 public class ManageFile {
@@ -77,14 +81,14 @@ public class ManageFile {
         return strB.toString();
     }
 
-    public String readAssetsFile(Context c) {
+    public String readAssetsFile(String filename, Context c) {
         BufferedReader fileIn;
         String outputFile = "";
         AssetManager am = c.getAssets();
         StringBuilder strB = new StringBuilder();
 
         try {
-            InputStream is = am.open("song.txt");
+            InputStream is = am.open(filename);
             fileIn = new BufferedReader(new InputStreamReader(is));
             while ((outputFile = fileIn.readLine()) != null) {
                 strB.append(outputFile + "\n");
@@ -98,5 +102,25 @@ public class ManageFile {
         }
 
         return strB.toString();
+    }
+
+    public void jsonDecode(Context c) {
+
+        String jsonString = readAssetsFile("Song.json", c);
+        JSONArray song;
+
+        try {
+            JSONObject songs = new JSONObject(jsonString);
+            song = new JSONArray("titolo1");    //value of titolo1 of type String cannot be casted to JSONArray
+
+            String title = (String) song.getString(0);
+            String artist = (String) song.getString(1);
+            String genre = (String) song.getString(2);
+            Integer duration = (Integer) song.getInt(3);
+            Log.d("songPrint", title + ", " + artist + ", " + genre + ", " + duration);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
