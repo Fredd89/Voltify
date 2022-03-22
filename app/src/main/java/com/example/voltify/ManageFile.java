@@ -107,16 +107,16 @@ public class ManageFile {
     public void jsonDecode(Context c) {
 
         String jsonString = readAssetsFile("Song.json", c);
-        JSONArray song;
 
         try {
-            JSONObject songs = new JSONObject(jsonString);
-            song = new JSONArray("titolo1");    //value of titolo1 of type String cannot be casted to JSONArray
+            JSONObject json = new JSONObject(jsonString);
+            JSONObject songs = json.getJSONObject("songs");
+            JSONObject song = songs.getJSONObject("titolo1");    //value of titolo1 of type String cannot be casted to JSONArray
 
-            String title = (String) song.getString(0);
-            String artist = (String) song.getString(1);
-            String genre = (String) song.getString(2);
-            Integer duration = (Integer) song.getInt(3);
+            String title = (String) song.getString("title");
+            String artist = (String) song.getString("artist");
+            String genre = (String) song.getString("genre");
+            Integer duration = (Integer) song.getInt("duration");
             Log.d("songPrint", title + ", " + artist + ", " + genre + ", " + duration);
         }
         catch (JSONException e) {
